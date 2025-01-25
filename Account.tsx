@@ -1,4 +1,4 @@
-import {CommonActions, useNavigation, useRoute} from '@react-navigation/native';
+import {useRoute} from '@react-navigation/native';
 import Waypoint from '@sky-mavis/waypoint-native';
 import {useEffect} from 'react';
 import {
@@ -7,32 +7,27 @@ import {
   SafeAreaView,
   ScrollView,
   StyleSheet,
-  View,
   Text,
+  View,
 } from 'react-native';
 import {v4 as uuidv4} from 'uuid';
 
-const waypoint = new Waypoint({
-  waypointOrigin: 'https://waypoint.roninchain.com',
-  clientId: '0c747b15-3e92-45eb-ae69-1ab32e8b8cbf',
-  redirectUri: 'pufftown://waypoint',
-  rpcUrl: 'https://api.roninchain.com/rpc',
-  chainId: 2020,
-});
+// const waypoint = new Waypoint({
+//   waypointOrigin: 'https://waypoint.roninchain.com',
+//   clientId: '0c747b15-3e92-45eb-ae69-1ab32e8b8cbf',
+//   redirectUri: 'pufftown://waypoint',
+//   rpcUrl: 'https://api.roninchain.com/rpc',
+//   chainId: 2020,
+// });
 
-export const HomeScreen = () => {
+export const AccountScreen = () => {
   const route = useRoute();
-  const navigation  = useNavigation();
 
-  useEffect(() => {
-    if (route.path) {
-      waypoint.onResponse(route.path);
-    }
-  }, [route]);
-
-  const toAbout = () => {
-    navigation.navigate('About')
-  }
+  // useEffect(() => {
+  //   if (route.path) {
+  //     waypoint.onResponse(route.path);
+  //   }
+  // }, [route]);
 
   // const authorize = async () => {
   //   try {
@@ -49,9 +44,7 @@ export const HomeScreen = () => {
     <SafeAreaView style={styles.container}>
       <ScrollView contentContainerStyle={styles.scrollContainer}>
         <View style={styles.buttonContainer}>
-          {/* <Button title="Authorize" onPress={authorize} /> */}
-          <Text>Home</Text>
-          <Button title="ToAbout" onPress={toAbout} />
+          <Text>Account</Text>
         </View>
       </ScrollView>
     </SafeAreaView>
