@@ -1,14 +1,28 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { HomeScreen } from './Home';
 import { AboutScreen } from './About';
 import { AccountScreen } from './Account';
+import { Linking } from 'react-native';
+import { waypoint } from './waypoint';
 
 const prefix = 'pufftown://';
 const Stack = createNativeStackNavigator();
 
 export default function App() {
+  useEffect(() => {
+    const handleDeepLink = async (event) => {
+      waypoint.onResponse(event.url);
+    };
+
+    const unsubscribe = Linking.addEventListener('url', handleDeepLink);
+
+    return () => {
+      unsubscribe.remove();
+    };
+  }, []);
+
   const linking = {
     prefixes: [prefix],
     config: {

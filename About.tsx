@@ -11,23 +11,24 @@ import {
     View,
 } from 'react-native';
 import { v4 as uuidv4 } from 'uuid';
+import { waypoint } from './waypoint';
 
-const waypoint = new Waypoint({
-    waypointOrigin: 'https://waypoint.roninchain.com',
-    clientId: '0c747b15-3e92-45eb-ae69-1ab32e8b8cbf',
-    redirectUri: 'pufftown://waypoint',
-    rpcUrl: 'https://api.roninchain.com/rpc',
-    chainId: 2020,
-});
+// const waypoint = new Waypoint({
+//     waypointOrigin: 'https://waypoint.roninchain.com',
+//     clientId: '0c747b15-3e92-45eb-ae69-1ab32e8b8cbf',
+//     redirectUri: 'pufftown://waypoint',
+//     rpcUrl: 'https://api.roninchain.com/rpc',
+//     chainId: 2020,
+// });
 
 export const AboutScreen = () => {
-    const route = useRoute();
+    // const route = useRoute();
 
-    useEffect(() => {
-        if (route.path) {
-            waypoint.onResponse(route.path);
-        }
-    }, [route]);
+    // useEffect(() => {
+    //     if (route.path) {
+    //         waypoint.onResponse(route.path);
+    //     }
+    // }, [route]);
 
     const authorize = async () => {
         try {
